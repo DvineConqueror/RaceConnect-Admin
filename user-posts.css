@@ -1,0 +1,161 @@
+/* Main Content */
+.main-content {
+    padding: 28px 48px;
+    flex: 1;
+    overflow-y: hidden;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of cards */
+    gap: 16px; /* Space between cards */
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        margin-left: 250px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+}
+
+/* Post Card Styling */
+.post-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 16px;
+    width: calc(30.333% - 16px); /* Adjust width for three cards per row */
+    height: auto;
+}
+
+@media (max-width: 1024px) {
+    .post-card {
+        width: calc(50% - 16px); /* Adjust width for two cards per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .post-card {
+        width: calc(80% - 16px); /* Adjust width for one card per row */
+        padding: 12px;
+        margin: 0 auto;
+    }
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.post-time {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.post-actions button {
+    border: none;
+    border-radius: 10px;
+    padding: 4px 6px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .post-actions button {
+        padding: 3px 5px;
+        margin-left: 5px;
+    }
+}
+
+.post-actions button:first-child {
+    background-color: #009934;
+}
+
+.post-actions button:nth-child(2) {
+    background-color: #EFBA00;
+}
+
+.post-actions button:last-child {
+    background-color: #D00000;
+}
+
+.post-actions button:hover {
+    transform: scale(1.05);
+}
+
+.post-actions button:first-child:hover {
+    background-color: #007a2a;
+}
+
+.post-actions button:nth-child(2):hover {
+    background-color: #cfa000;
+}
+
+.post-actions button:last-child:hover {
+    background-color: #a30000;
+}
+
+.post-caption {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .post-caption {
+        font-size: 12px;
+    }
+}
+
+.post-image img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.post-interactions {
+    display: flex;
+    padding: 0 5px;
+    font-size: 18px;
+    color: #6b7280;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 768px) {
+    .post-interactions {
+        font-size: 16px;
+        padding: 0 3px;
+    }
+}
+
+.post-interactions box-icon {
+    cursor: pointer;
+}
+
+.post-interactions span {
+    display: flex;
+    margin-right: 40px; /* Adjust space between spans */
+}
+
+@media (max-width: 768px) {
+    .post-interactions span {
+        margin-right: 20px; /* Adjust space between spans for smaller screens */
+    }
+}

@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 16px;
+}
+
+.main-content {
+    padding: 28px 48px;
+    flex: 1;
+    overflow-y: hidden;
+}
+
+.chart-section {
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 100%;
+    border-radius: 8px;
+    overflow-x: auto; /* Added to handle horizontal overflow */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: table; /* Change from block to table */
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #a63434;
+    display: table-header-group;
+    width: 100%;
+}
+
+tbody {
+    display: table-row-group;
+    width: 100%;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+th, td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    min-width: 10px; /* Keep this if you want column consistency */
+}
+
+th {
+    background-color: #a63434;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e0f7fa;
+}
+
+.status-banned {
+    color: #e53935;
+    font-weight: bold;
+}
+
+button{
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 900;
+    background-color: #34a66f;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+/* Checkbox styling */
+.input-group, .select-all-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-check, .select-all {
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+    border: 5px solid #a63434;
+    margin: 0;
+    padding: 0;
+}
+
+.user-check {
+    margin: auto;
+}
+
+/* Sticky header adjustment */
+th:first-child {
+    padding-left: 20px;
+}
+
+/* Optional: Hover effect for checkboxes */
+tr:hover .user-check {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
