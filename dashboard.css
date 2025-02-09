@@ -31,9 +31,9 @@
 }
 
 .stat-text {
-    text-align: left;
+    text-align: center;
     flex: 1;
-    margin-left: 16px;
+    margin-left: 0;
 }
 
 .stat-card box-icon {
