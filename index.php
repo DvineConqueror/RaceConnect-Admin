@@ -14,6 +14,13 @@ if (!isset($_SESSION['email'])) {
 // Get the logged-in user's email and username
 $email = $_SESSION['email'];
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
+
+include '../raceconnect-api-with-composer/raceconnectapi/db_connect.php';
+
+// Query the database for user information
+$result = $conn->query("SELECT COUNT(*) AS total_users from users");
+$row = $result->fetch_assoc();
+$total_users = $row['total_users'];
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +131,7 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
                         <box-icon name='user' type="solid" color="red" class="stat-icon"></box-icon>
                     </div>
                     <div class="stat-text">
-                        <div class="stat-number">200</div>
+                        <div class="stat-number"><?php echo $total_users; ?></div>
                         <div class="stat-label">Total Users</div>
                     </div>
                 </div>
