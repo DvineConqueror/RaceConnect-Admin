@@ -11,6 +11,7 @@ session_start();
 // Get form data
 $email = $_POST['email'];
 $password = $_POST['password'];
+$remember_me = isset($_POST['remember_me']) ? true : false;
 
 // Prepare and bind
 $stmt = $conn->prepare("SELECT username, password FROM users WHERE email = ?");
@@ -31,6 +32,16 @@ if ($result->num_rows > 0) {
         // Set session variables
         $_SESSION['email'] = $email;
         $_SESSION['username'] = $username;
+
+        // Set cookie if remember me is checked
+        if ($remember_me) {
+            setcookie('email', $email, time() + (86400 * 30), "/");//30 for 30 days
+            setcookie('username', $username, time() + (86400 * 30), "/");
+        }else{
+            // Clear cookies if remember me is not ticked
+            setcookie('email', '', time() - 3600, "/");
+            setcookie('username', '', time() - 3600, "/");
+        }
 
         // Redirect to main index page
         header("Location: index.php");

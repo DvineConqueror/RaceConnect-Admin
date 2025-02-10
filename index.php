@@ -1,5 +1,6 @@
 <?php
 // filepath: /c:/xampp/htdocs/RaceConnect-Admin/index.php
+include '../raceconnect-api-with-composer/raceconnectapi/db_connect.php';
 
 // Start session
 session_start();
@@ -15,12 +16,14 @@ if (!isset($_SESSION['email'])) {
 $email = $_SESSION['email'];
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
 
-include '../raceconnect-api-with-composer/raceconnectapi/db_connect.php';
-
 // Query the database for user information
 $result = $conn->query("SELECT COUNT(*) AS total_users from users");
 $row = $result->fetch_assoc();
 $total_users = $row['total_users'];
+
+$result = $conn->query("SELECT COUNT(*) AS total_posts from posts");
+$row = $result->fetch_assoc();
+$total_posts = $row['total_posts'];
 ?>
 
 <!DOCTYPE html>
@@ -138,7 +141,7 @@ $total_users = $row['total_users'];
                 <div class="stat-card">
                     <box-icon name='upload' color="red" class="stat-icon"></box-icon>
                     <div class="stat-text">
-                        <div class="stat-number">460</div>
+                        <div class="stat-number"><?php echo $total_posts; ?></div>
                         <div class="stat-label">Total Posts</div>
                     </div>
                 </div>
