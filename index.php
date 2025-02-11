@@ -29,18 +29,16 @@ $total_posts = $row['total_posts'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RaceConnect Admin Dashboard</title>
-    <style>
-        <?php include 'styles.css'; ?>
-        <?php include 'dashboard.css'; ?>
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <script src="./chart.js" defer></script>
-    <script src="./navBar.js" defer></script>
-    <script src="./logout_script.js"></script>
+    <script src="assets/javascript/navBar.js" defer></script>
+    <script src="assets/javascript/chart.js" defer></script>
+    <script src="assets/javascript/logout_script.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -90,7 +88,7 @@ $total_posts = $row['total_posts'];
                 </a>
             </li>
             <li>
-                <a href="index_user.html" class="nav-item">
+                <a href="index_user.php" class="nav-item">
                     <box-icon name='user' type='solid' color='rgb(185 28 28)'></box-icon>
                     <span>User</span>
                 </a>
@@ -146,10 +144,10 @@ $total_posts = $row['total_posts'];
                     </div>
                 </div>
                 <div class="stat-card">
-                    <box-icon name='message-rounded-detail' type='solid' color='red' class="stat-icon"></box-icon>
+                <box-icon type='solid' name='star' color="red"></box-icon>
                     <div class="stat-text">
-                        <div class="stat-number">46</div>
-                        <div class="stat-label">Total Comments</div>
+                        <div class="stat-number">Open Wheel Racing</div>
+                        <div class="stat-label">Most Popular Category</div>
                     </div>
                 </div>
             </div>

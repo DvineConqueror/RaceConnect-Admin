@@ -1,19 +1,41 @@
+<?php
+// filepath: /c:/xampp/htdocs/RaceConnect-Admin/index.php
+include '../raceconnect-api-with-composer/raceconnectapi/db_connect.php';
+
+// Start session
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    // Redirect to login page if not logged in
+    header("Location: index_login.html");
+    exit();
+}
+
+// Get the logged-in user's email and username
+$email = $_SESSION['email'];
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RaceConnect Admin Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="user-page.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/user-page.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <script src="./navBar.js" defer></script>
-    <script src="./user-table.js" defer></script>
+    <script src="assets/javascript/navBar.js" defer></script>
+    <script src="assets/javascript/user-table.js" defer></script>
 </head>
 <body>
     <!-- Header -->
     <div class="header">
+        <div class="logo">
+            <img src="./assets/RaceConnectLogo.png" alt="RaceConnect Logo" id="rcLogo">
+        </div>
         <div class="header-title">
             Race Connect
         </div>
@@ -25,9 +47,10 @@
             <div class="relative">
                 <box-icon type='solid' name='user-circle' color="white" size="md" class="user-icon" id="userIcon"></box-icon>
                 <div id="dropdownMenu" class="dropdown-menu">
+                    <span class="welcomeMsg">Welcome <span class="username">&nbsp;<?php echo htmlspecialchars($username); ?></span>!</span>
                     <a href="#" class="dropdown-item">Change Password</a>
                     <a href="#" class="dropdown-item">Edit Profile</a>
-                    <a href="#" class="dropdown-item">Logout</a>
+                    <a href="logout.php" class="dropdown-item">Logout</a>
                 </div>
             </div>
         </div>
@@ -48,7 +71,7 @@
             <nav class="nav-menu">
                 <ul class="nav-list">
                     <li>
-                        <a href="index.html" class="nav-item">
+                        <a href="index.php" class="nav-item">
                             <box-icon type='solid' name='dashboard' color='rgb(185 28 28)'></box-icon>
                             <span>Dashboard</span>
                         </a>
@@ -92,27 +115,41 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- User Section -->
-            <div class="chart-section">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <div class="select-all-container">
-                                    <input type="checkbox" class="select-all" id="selectAll">
-                                </div>
-                            </th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="userTableBody">
-                        <!-- User rows will be dynamically added here -->
-                    </tbody>
-                </table>
-            </div>
+            <!-- User Management Section -->
+            <section class="user-management">
+                <div class="section-header">
+                    <h2>User Management</h2>
+                </div>
+
+                <!-- Search and Filter Bar -->
+                <div class="search-filter-bar">
+                    <input type="text" placeholder="Search users..." class="search-input">
+                    <select class="filter-dropdown">
+                        <option value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="banned">Banned</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                </div>
+
+                <!-- User Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="select-all" id="selectAll"></th>
+                                <th>Name</th>
+                                <th>Date Registered</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <!-- User rows will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </main>
     </div>
 </body>

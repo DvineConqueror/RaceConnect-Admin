@@ -99,7 +99,7 @@ body {
     left: 0;
     height: auto;
     overflow-y: hidden; /* Allow vertical scroll */
-
+    flex-shrink: 0;
 }
 
 .sidebar.open {
@@ -353,6 +353,10 @@ body {
     z-index: 30;
 }
 
+.header-title {
+    font-size: 32px;
+}
+
 .header #menuButton {
     display: block;
 }
@@ -364,4 +368,10 @@ body {
 .header button:focus + #overlay {
     display: block;
 }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 24px;
+    }
 }
