@@ -1,100 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const posts = [
-        {
-            userName: 'John Doe',
-            postTime: '2 hours ago',
-            caption: 'This is the caption of the post.',
-            imageUrl: '../RaceConnect-Admin/assets/posts-sample.jpg',
-            likes: 120,
-            dislikes: 5,
-            comments: 30,
-            reposts: 10
-        },
-        {
-            userName: 'Jane Smith',
-            postTime: '3 hours ago',
-            caption: 'Another post caption.',
-            imageUrl: '../RaceConnect-Admin/assets/posts-sample.jpg',
-            likes: 90,
-            dislikes: 2,
-            comments: 15,
-            reposts: 5
-        },
-        {
-            userName: 'Jane Smith',
-            postTime: '3 hours ago',
-            caption: 'Another post caption.',
-            imageUrl: '../RaceConnect-Admin/assets/posts-sample.jpg',
-            likes: 90,
-            dislikes: 2,
-            comments: 15,
-            reposts: 5
-        },
-        {
-            userName: 'Jane Smith',
-            postTime: '3 hours ago',
-            caption: 'Another post caption.',
-            imageUrl: '../RaceConnect-Admin/assets/posts-sample.jpg',
-            likes: 90,
-            dislikes: 2,
-            comments: 15,
-            reposts: 5
-        },
-        {
-            userName: 'Jane Smith',
-            postTime: '3 hours ago',
-            caption: 'Another post caption.',
-            imageUrl: '../RaceConnect-Admin/assets/posts-sample.jpg',
-            likes: 90,
-            dislikes: 2,
-            comments: 15,
-            reposts: 5
-        },
-        {
-            userName: 'Jane Smith',
-            postTime: '3 hours ago',
-            caption: 'Another post caption.',
-            imageUrl: '../RaceConnect-Admin/assets/posts-sample.jpg',
-            likes: 90,
-            dislikes: 2,
-            comments: 15,
-            reposts: 5
-        }
-        // Add more posts as needed
-    ];
+    fetchPosts();
 
-    const mainContent = document.getElementById('mainContent');
+    function fetchPosts() {
+        fetch('fetch_posts.php')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(posts => {
+                console.log('Fetched posts:', posts); // Debugging statement
+                populatePosts(posts);
+            })
+            .catch(error => console.error('Error fetching posts:', error));
+    }
 
-    posts.forEach(post => {
-        const postCard = document.createElement('div');
-        postCard.className = 'post-card';
+    function populatePosts(posts) {
+        const mainContent = document.getElementById('mainContent');
+        mainContent.innerHTML = ''; // Clear existing content
 
-        postCard.innerHTML = `
-            <div class="post-header">
-                <div class="user-info">
-                    <span class="user-name">${post.userName}</span>
-                    <span class="post-time">${post.postTime}</span>
+        posts.forEach(post => {
+            const postCard = document.createElement('div');
+            postCard.className = 'post-card';
+
+            postCard.innerHTML = `
+                <div class="post-header">
+                    <div class="user-info">
+                        <span class="user-name">${post.user_id}</span>
+                        <span class="post-time">${new Date(post.created_at).toLocaleString()}</span>
+                    </div>
+                    <div class="post-actions">
+                        <button class="edit-btn"><box-icon size="sm" name='edit' color="white"></box-icon></button>
+                        <button class="unsee-btn"><box-icon size="sm" type='solid' name='low-vision' color="white"></box-icon></button>
+                        <button class="delete-btn"><box-icon size="sm" type='solid' name='trash' color="white"></box-icon></button>
+                    </div>
                 </div>
-                <div class="post-actions">
-                    <button class="edit-btn"><box-icon name='edit' color="white"></box-icon></button>
-                    <button class="unsee-btn"><box-icon type='solid' name='low-vision' color="white"></box-icon></button>
-                    <button class="delete-btn"><box-icon type='solid' name='trash' color="white"></box-icon></button>
+                <!-- Scrollable Content -->
+                <div class="scrollable-content">
+                    <div class="post-caption">
+                        ${post.content}
+                    </div>
+                    <div class="post-image">
+                        <img src="${post.img_url}" alt="Post Image">
+                    </div>
                 </div>
-            </div>
-            <div class="post-caption">
-                ${post.caption}
-            </div>
-            <div class="post-image">
-                <img src="${post.imageUrl}" alt="Post Image">
-            </div>
-            <div class="post-interactions">
-                <box-icon name='like'></box-icon><span class="likes">${post.likes}</span>
-                <box-icon name='dislike'></box-icon><span class="dislikes">${post.dislikes}</span>
-                <box-icon name='comment-detail'></box-icon><span class="comments">${post.comments}</span>
-                <box-icon name='repost'></box-icon><span class="reposts">${post.reposts}</span>
-            </div>
-        `;
 
-        mainContent.appendChild(postCard);
-    });
+                <!-- Non-Scrollable Interactions -->
+                <div class="post-interactions">
+                    <box-icon name='like'></box-icon><span class="likes">${post.like_count}</span>
+                    <box-icon name='comment-detail'></box-icon><span class="comments">${post.comment_count}</span>
+                    <box-icon name='repost'></box-icon><span class="reposts">${post.repost_count}</span>
+                </div>
+            `;
+
+            mainContent.appendChild(postCard);
+        });
+    }
 });

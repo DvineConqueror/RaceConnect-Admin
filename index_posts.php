@@ -1,5 +1,4 @@
 <?php
-// filepath: /c:/xampp/htdocs/RaceConnect-Admin/index.php
 include '../raceconnect-api-with-composer/raceconnectapi/db_connect.php';
 
 // Start session
@@ -24,12 +23,12 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RaceConnect Admin Dashboard</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/user-page.css">
+    <link rel="stylesheet" href="assets/css/user-posts.css">
     <link rel="icon" href="./assets/RaceConnectLogo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="assets/javascript/navBar.js" defer></script>
-    <script src="assets/javascript/user-table.js" defer></script>
+    <script src="assets/javascript/user-posts.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -78,14 +77,14 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
                         </a>
                     </li>
                     <li>
-                        <a href="#top" class="nav-item active">
-                            <box-icon name='user' type='solid' color='white'></box-icon>
+                        <a href="index_user.php" class="nav-item">
+                            <box-icon name='user' type='solid' color='rgb(185 28 28)'></box-icon>
                             <span>User</span>
                         </a>
                     </li>
                     <li>
-                        <a href="index_posts.php" class="nav-item">
-                            <box-icon name='pin' type='solid' color='rgb(185 28 28)'></box-icon>
+                        <a href="#top" class="nav-item active">
+                            <box-icon name='pin' type='solid' color='white'></box-icon>
                             <span>Posts</span>
                         </a>
                     </li>
@@ -111,47 +110,16 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
             </nav>
         </aside>
 
-        <!-- Overlay for Mobile -->
+        <!-- Overlay for mobile -->
         <div id="overlay" class="overlay" aria-hidden="true"></div>
 
         <!-- Main Content -->
-        <main class="main-content">
-            <!-- User Management Section -->
-            <section class="user-management">
-                <div class="section-header">
-                    <h2>User Management</h2>
-                </div>
-
-                <!-- Search and Filter Bar -->
-                <div class="search-filter-bar">
-                    <input type="text" placeholder="Search users..." class="search-input">
-                    <select class="filter-dropdown">
-                        <option value="all">All</option>
-                        <option value="active">Active</option>
-                        <option value="banned">Banned</option>
-                        <option value="suspended">Suspended</option>
-                    </select>
-                </div>
-
-                <!-- User Table -->
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th><input type="checkbox" class="select-all" id="selectAll"></th>
-                                <th>Name</th>
-                                <th>Date Registered</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="userTableBody">
-                            <!-- User rows will be dynamically added here -->
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </main>
+        <div class="main-content" id="mainContent">
+            <!-- Posts Section -->
+            <div id="postsContainer">
+                <!-- Posts will be dynamically added here -->
+            </div>
+        </div>
     </div>
 </body>
 </html>

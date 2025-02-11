@@ -34,6 +34,7 @@ $total_posts = $row['total_posts'];
     <title>RaceConnect Admin Dashboard</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="icon" href="./assets/RaceConnectLogo.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="assets/javascript/navBar.js" defer></script>
@@ -94,7 +95,7 @@ $total_posts = $row['total_posts'];
                 </a>
             </li>
             <li>
-                <a href="index_posts.html" class="nav-item">
+                <a href="index_posts.php" class="nav-item">
                     <box-icon name='pin' type='solid' color='rgb(185 28 28)'></box-icon>
                     <span>Posts</span>
                 </a>
