@@ -101,7 +101,7 @@ $total_posts = $row['total_posts'];
                 </a>
             </li>
             <li>
-                <a href="index_notifs.html" class="nav-item">
+                <a href="index_notifs.php" class="nav-item">
                     <box-icon name='bell' type='solid' color='rgb(185 28 28)'></box-icon>
                     <span>Notifications</span>
                 </a>

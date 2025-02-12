@@ -30,6 +30,7 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="assets/javascript/navBar.js" defer></script>
     <script src="assets/javascript/user-table.js" defer></script>
+    <script src="assets/javascript/logout_script.js" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -90,7 +91,7 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
                         </a>
                     </li>
                     <li>
-                        <a href="index_notifs.html" class="nav-item">
+                        <a href="index_notifs.php" class="nav-item">
                             <box-icon name='bell' type='solid' color='rgb(185 28 28)'></box-icon>
                             <span>Notifications</span>
                         </a>
@@ -152,6 +153,18 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
                 </div>
             </section>
         </main>
+    </div>
+    
+    <!-- Logout Dialog -->
+    <div id="logoutDialog" class="dialog-overlay">
+        <div class="dialog">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to log out?</p>
+            <div class="dialog-buttons">
+                <button id="cancelLogout" class="dialog-button">No</button>
+                <button id="confirmLogout" class="dialog-button">Yes</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>

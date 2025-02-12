@@ -76,20 +76,23 @@ body {
 /* Post Actions */
 .post-actions {
     display: flex;
-    gap: 8px; /* Increased spacing between buttons for better readability */
+    gap: 8px;
     margin-bottom: 16px;
 }
 
 .post-actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     border-radius: 8px;
-    padding: 6px 12px; /* Increased padding for better touch targets */
+    padding: 8px 12px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transitions for all properties */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    outline: none; /* Remove default focus outline */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
 }
 
 /* Edit Button (Green) */
@@ -168,7 +171,6 @@ body {
 /* Post Interactions (Non-Scrollable) */
 .post-interactions {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     font-size: 18px;
     color: #6b7280;
@@ -178,6 +180,7 @@ body {
 .post-interactions box-icon {
     cursor: pointer;
     transition: color 0.3s ease;
+    margin-right: 6px;
 }
 
 .post-interactions box-icon:hover {
@@ -188,6 +191,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-bottom: 6px;
 }
 
 /* Responsive Design for Post Interactions */

@@ -48,9 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <!-- Non-Scrollable Interactions -->
                 <div class="post-interactions">
-                    <box-icon name='like'></box-icon><span class="likes">${post.like_count}</span>
                     <box-icon name='comment-detail'></box-icon><span class="comments">${post.comment_count}</span>
-                    <box-icon name='repost'></box-icon><span class="reposts">${post.repost_count}</span>
                 </div>
             `;
 
