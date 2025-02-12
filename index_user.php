@@ -1,6 +1,6 @@
 <?php
 // filepath: /c:/xampp/htdocs/RaceConnect-Admin/index.php
-include '../raceconnect-api-with-composer/raceconnectapi/db_connect.php';
+include '../raceconnect-api-with-composer/db_connect.php';
 
 // Start session
 session_start();
@@ -132,7 +132,15 @@ $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Guest';
                         <option value="banned">Banned</option>
                         <option value="suspended">Suspended</option>
                     </select>
+
+                    <!-- Bulk Action Buttons -->
+                    <div class="bulk-actions">
+                        <button id="bulkBan" class="bulk-action-btn">Ban Selected</button>
+                        <button id="bulkSuspend" class="bulk-action-btn">Suspend Selected</button>
+                        <button id="bulkUnban" class="bulk-action-btn">Unban Selected</button>
+                    </div>
                 </div>
+
 
                 <!-- User Table -->
                 <div class="table-container">

@@ -1,5 +1,5 @@
 <?php
-include '../raceconnect-api-with-composer/raceconnectapi/db_connect.php';
+include '../raceconnect-api-with-composer/db_connect.php';
 
 // Start session
 session_start();

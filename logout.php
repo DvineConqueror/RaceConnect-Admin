@@ -8,6 +8,6 @@ session_start();
 session_destroy();
 
 // Redirect to login page
-header("Location: index_login.html");
+header("Location: index_login.php");
 exit();
 ?>

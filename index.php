@@ -1,6 +1,6 @@
 <?php
 // filepath: /c:/xampp/htdocs/RaceConnect-Admin/index.php
-include '../raceconnect-api-with-composer/raceconnectapi/db_connect.php';
+include '../raceconnect-api-with-composer/db_connect.php';
 
 // Start session
 session_start();
@@ -8,7 +8,7 @@ session_start();
 // Check if the user is logged in
 if (!isset($_SESSION['email'])) {
     // Redirect to login page if not logged in
-    header("Location: index_login.html");
+    header("Location: index_login.php");
     exit();
 }
 
