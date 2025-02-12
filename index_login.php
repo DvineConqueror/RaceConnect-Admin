@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Login Form -->
     <div class="login-container">
         <div class="login-form">
-            <h2 class="form-title">Welcome to Race Connect!</h2>
+            <h2 class="form-title">Ready, Set, Connect!</h2>
             <form action="index_login.php" method="POST">
                 <div class="form-group">
                     <label for="email" class="input-label">Email</label>
